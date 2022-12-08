@@ -21,6 +21,7 @@ function App() {
   const [text, setText] = useState('');
   const [filterCase, setFilterCase] = useState('all');
   const [itemsLeft, setItemsLeft] = useState(0);
+  const [mode, setMode] = useState(true);
 
   const filterBtns = (type) => {
     switch (type) {
@@ -94,8 +95,28 @@ function App() {
   }, [filterCase, buttons]);
 
   return (
-    <div className="app">
-      <div className="todos-list">
+    <div className={`app ${mode ? 'app--light' : 'app--dark'}`}>
+      <div className="app__bg">
+        <img
+          src={`./src/assets/bg-desktop-${mode ? 'light' : 'dark'}.jpg`}
+          alt=""
+        />
+      </div>
+      <div
+        className={`todos-list ${
+          mode ? 'todos-list--light' : 'todos-list--dark'
+        }`}
+      >
+        <div className="todos-list__header">
+          <h1>TODO</h1>
+          <button
+            className={`todos-list__mode ${
+              mode ? 'todos-list__mode--light' : 'todos-list__mode--dark'
+            }`}
+            onClick={() => setMode(!mode)}
+            type="button"
+          ></button>
+        </div>
         <div className="todos-list__input">
           <label>
             <input

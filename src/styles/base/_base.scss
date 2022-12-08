@@ -17,3 +17,8 @@ body {
   display: flex;
   flex-grow: 1;
 }
+
+h1 {
+  font-size: inherit;
+  margin: 0;
+}

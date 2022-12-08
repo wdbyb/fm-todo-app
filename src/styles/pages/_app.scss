@@ -3,9 +3,29 @@
   flex-direction: column;
   flex-grow: 1;
 
-  background: $bg-color-light;
+  position: relative;
 
   font-family: 'Josefin Sans', sans-serif;
   font-size: 18px;
   line-height: 18px;
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &--light {
+    background: $bg-color-light;
+  }
+
+  &--dark {
+    background: $bg-color-dark;
+  }
 }
