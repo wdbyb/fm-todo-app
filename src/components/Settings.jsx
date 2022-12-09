@@ -10,9 +10,9 @@ function Settings(props) {
     <div className="settings">
       <span>{itemsLeft} items left</span>
       <div className="settings__filters">
-        {inputs.map((input) => {
+        {inputs.map((input, i) => {
           return (
-            <div>
+            <div key={i}>
               <input
                 className={input === filterCase ? 'active' : ''}
                 onClick={onFilterClick}

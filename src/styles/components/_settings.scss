@@ -4,6 +4,8 @@
   justify-content: space-between;
   flex-wrap: wrap;
 
+  position: relative;
+
   padding: 16px 24px;
 
   font-size: 14px;
@@ -35,6 +37,24 @@
 
     &:hover {
       color: $color-primary-dark;
+    }
+  }
+
+  @media (max-width: 768px) {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    &__filters {
+      justify-content: center;
+
+      position: absolute;
+      bottom: -64px;
+      left: 0;
+      right: 0;
+
+      padding: 16px 52px;
+
+      border-radius: 5px;
     }
   }
 }

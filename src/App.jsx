@@ -10,6 +10,12 @@ function App() {
       <div className="app__bg">
         <img
           src={`./src/assets/bg-desktop-${mode ? 'light' : 'dark'}.jpg`}
+          srcSet={`./src/assets/bg-mobile-${
+            mode ? 'light' : 'dark'
+          }.jpg 600w, ./src/assets/bg-desktop-${
+            mode ? 'light' : 'dark'
+          }.jpg 1440w`}
+          sizes="(max-width: 600px) 600w, 1440w"
           alt=""
         />
       </div>

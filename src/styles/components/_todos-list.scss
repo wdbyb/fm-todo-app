@@ -9,7 +9,10 @@
   max-width: 620px;
   min-height: 580px;
   padding: 40px;
-  margin: 70px auto;
+  margin: 30px auto;
+
+  font-size: 18px;
+  line-height: 18px;
 
   z-index: 2;
 
@@ -24,6 +27,11 @@
     letter-spacing: 15px;
 
     color: #ffffff;
+
+    @media (max-width: 768px) {
+      font-size: 20px;
+      line-height: 20px;
+    }
   }
 
   &__mode {
@@ -36,13 +44,21 @@
   &__input {
     position: relative;
 
+    border-radius: 5px;
+
     input {
       width: 100%;
       padding: 24px 72px;
 
-      border-radius: 5px;
+      line-height: 100%;
 
       cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      input {
+        padding: 16px 52px;
+      }
     }
   }
 
@@ -50,20 +66,24 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-
-    border-radius: 5px;
   }
 
   &__list {
     flex-grow: 1;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
 
   &--light {
     color: $color-primary-light;
 
     .todos-list__list-wrapper {
-      background: #fff;
       box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+    }
+
+    .todos-list__list {
+      background: #fff;
     }
 
     .todos-list__input {
@@ -71,8 +91,20 @@
       box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
     }
 
+    .settings {
+      background: #fff;
+      box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+    }
+
+    .check__label {
+      &::before {
+        background: #fff;
+      }
+    }
+
     .todos-list__mode {
       background: url(./src/assets/icon-moon.svg) no-repeat 50% 50%;
+      background-size: contain;
     }
 
     .todo {
@@ -84,8 +116,11 @@
     color: $color-primary-dark;
 
     .todos-list__list-wrapper {
-      background: #25273d;
       box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
+    }
+
+    .todos-list__list {
+      background: #25273d;
     }
 
     .todos-list__input {
@@ -93,12 +128,56 @@
       box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
     }
 
+    .settings {
+      background: #25273d;
+      box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
+    }
+
+    .check__label {
+      &::before {
+        background: #25273d;
+      }
+    }
+
     .todos-list__mode {
       background: url(./src/assets/icon-sun.svg) no-repeat 50% 50%;
+      background-size: contain;
     }
 
     .todo {
       border-bottom: 1px solid #393a4b;
+    }
+  }
+
+  @media (max-width: 768px) {
+    gap: 16px;
+
+    padding: 48px 24px;
+    margin: 0 auto;
+
+    font-size: 12px;
+    line-height: 12px;
+
+    &__list-wrapper {
+      margin-bottom: 64px;
+    }
+
+    &__mode {
+      width: 20px;
+      height: 20px;
+    }
+
+    &--light {
+      .settings__filters {
+        background: #fff;
+        box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+      }
+    }
+    &--dark {
+      .settings__filters {
+        background: #25273d;
+        box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
+      }
     }
   }
 }
