@@ -1,17 +1,11 @@
+import Check from './Check';
+
 function Todo(props) {
   const { id, text, completed, onDeleteClick, onCheckClick } = props;
 
   return (
     <div className={`todo ${completed ? 'completed' : ''}`}>
-      <input
-        className="todo__checkbox"
-        type="checkbox"
-        name={`todo-${id}`}
-        id={`todo-${id}`}
-        checked={completed}
-        onChange={() => onCheckClick(id)}
-      />
-      <label className="todo__check" htmlFor={`todo-${id}`}></label>
+      <Check id={id} completed={completed} onChange={onCheckClick} />
       <button
         className="todo__delete"
         type="button"

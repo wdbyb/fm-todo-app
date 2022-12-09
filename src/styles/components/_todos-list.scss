@@ -1,0 +1,104 @@
+.todos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+
+  position: relative;
+
+  width: 100%;
+  max-width: 620px;
+  min-height: 580px;
+  padding: 40px;
+  margin: 70px auto;
+
+  z-index: 2;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: 15px;
+
+    color: #ffffff;
+  }
+
+  &__mode {
+    width: 30px;
+    height: 30px;
+
+    cursor: pointer;
+  }
+
+  &__input {
+    position: relative;
+
+    input {
+      width: 100%;
+      padding: 24px 72px;
+
+      border-radius: 5px;
+
+      cursor: pointer;
+    }
+  }
+
+  &__list-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    border-radius: 5px;
+  }
+
+  &__list {
+    flex-grow: 1;
+  }
+
+  &--light {
+    color: $color-primary-light;
+
+    .todos-list__list-wrapper {
+      background: #fff;
+      box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+    }
+
+    .todos-list__input {
+      background: #fff;
+      box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+    }
+
+    .todos-list__mode {
+      background: url(./src/assets/icon-moon.svg) no-repeat 50% 50%;
+    }
+
+    .todo {
+      border-bottom: 1px solid #e3e4f1;
+    }
+  }
+
+  &--dark {
+    color: $color-primary-dark;
+
+    .todos-list__list-wrapper {
+      background: #25273d;
+      box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
+    }
+
+    .todos-list__input {
+      background: #25273d;
+      box-shadow: 0px 35px 50px -15px rgba(0, 0, 0, 0.5);
+    }
+
+    .todos-list__mode {
+      background: url(./src/assets/icon-sun.svg) no-repeat 50% 50%;
+    }
+
+    .todo {
+      border-bottom: 1px solid #393a4b;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+.settings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  padding: 16px 24px;
+
+  font-size: 14px;
+  line-height: 14px;
+  color: #9495a5;
+
+  &__filters {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    font-weight: 700;
+
+    input {
+      cursor: pointer;
+
+      &.active {
+        color: #3a7cfd;
+      }
+
+      &:hover {
+        color: #3a7cfd;
+      }
+    }
+  }
+
+  &__clear-completed {
+    cursor: pointer;
+
+    &:hover {
+      color: $color-primary-dark;
+    }
+  }
+}

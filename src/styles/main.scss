@@ -10,7 +10,9 @@
 // layout
 
 // components
+@import './components/todos-list';
 @import './components/todo';
+@import './components/settings';
 
 //pages
 @import './pages/app';
