@@ -1,22 +1,18 @@
 import { useState } from 'react';
 import './styles/main.scss';
 import TodosList from './components/TodosList';
+import mobileImageLight from './assets/bg-mobile-light.jpg';
+import mobileImageLightRetina from './assets/bg-mobile-light@2x.jpg';
+import desktopImageLight from './assets/bg-desktop-light.jpg';
+import mobileImageDark from './assets/bg-mobile-dark.jpg';
+import mobileImageDarkRetina from './assets/bg-mobile-dark@2x.jpg';
+import desktopImageDark from './assets/bg-desktop-dark.jpg';
 
 function App() {
   const [mode, setMode] = useState(true);
-
-  let mobileImage = new URL(
-    `./bg-mobile-${mode ? 'light' : 'dark'}.jpg`,
-    import.meta.url
-  ).href;
-  let mobileImageRetina = new URL(
-    `./bg-mobile-${mode ? 'light' : 'dark'}@2x.jpg`,
-    import.meta.url
-  ).href;
-  let desktopImage = new URL(
-    `./bg-desktop-${mode ? 'light' : 'dark'}.jpg`,
-    import.meta.url
-  ).href;
+  let mobileImage = mode ? mobileImageLight : mobileImageDark;
+  let mobileImageRetina = mode ? mobileImageLightRetina : mobileImageDarkRetina;
+  let desktopImage = mode ? desktopImageLight : desktopImageDark;
 
   return (
     <div className={`app ${mode ? 'app--light' : 'app--dark'}`}>
