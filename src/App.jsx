@@ -4,11 +4,19 @@ import TodosList from './components/TodosList';
 
 function App() {
   const [mode, setMode] = useState(true);
-  let mobileImage = `./src/assets/bg-mobile-${mode ? 'light' : 'dark'}.jpg`;
-  let mobileImageRetina = `./src/assets/bg-mobile-${
-    mode ? 'light' : 'dark'
-  }@2x.jpg`;
-  let desktopImage = `./src/assets/bg-desktop-${mode ? 'light' : 'dark'}.jpg`;
+
+  let mobileImage = new URL(
+    `./bg-mobile-${mode ? 'light' : 'dark'}.jpg`,
+    import.meta.url
+  ).href;
+  let mobileImageRetina = new URL(
+    `./bg-mobile-${mode ? 'light' : 'dark'}@2x.jpg`,
+    import.meta.url
+  ).href;
+  let desktopImage = new URL(
+    `./bg-desktop-${mode ? 'light' : 'dark'}.jpg`,
+    import.meta.url
+  ).href;
 
   return (
     <div className={`app ${mode ? 'app--light' : 'app--dark'}`}>
