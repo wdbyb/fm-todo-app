@@ -32,9 +32,9 @@
       left: 0;
       width: 18px;
       height: 18px;
-      background-image: url(./src/assets/icon-cross.svg);
-      background-repeat: no-repeat;
-      background-position: 50% 50%;
+      // background-image: url(./assets/icon-cross.svg);
+      // background-repeat: no-repeat;
+      // background-position: 50% 50%;
     }
 
     @media (max-width: 768px) {
@@ -63,8 +63,11 @@
 
     &:checked + .check__label {
       &::before {
-        background: url(./src/assets/icon-check.svg) no-repeat 50% 50%;
-        transform: translate(-51%, -47%);
+        background: linear-gradient(135deg, #55ddff 0%, #c058f3 100%);
+      }
+
+      img {
+        opacity: 1;
       }
     }
   }
@@ -79,6 +82,21 @@
     border-radius: 50%;
     cursor: pointer;
 
+    img {
+      display: block;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+
+      width: 11px;
+      height: 9px;
+
+      opacity: 0;
+
+      transform: translate(-50%, -50%);
+    }
+
     &::before {
       content: '';
       position: absolute;
@@ -87,6 +105,7 @@
       width: 24px;
       height: 24px;
       background: #fff;
+      // background: #000;
       border-radius: 50%;
       transform: translate(-50%, -50%);
       transition: background 0.1s ease-in-out;

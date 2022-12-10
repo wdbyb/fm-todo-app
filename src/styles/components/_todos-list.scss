@@ -35,8 +35,14 @@
   }
 
   &__mode {
-    width: 30px;
-    height: 30px;
+    display: block;
+    width: 26px;
+    height: 26px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
 
     cursor: pointer;
   }
@@ -103,8 +109,8 @@
     }
 
     .todos-list__mode {
-      background: url(./src/assets/icon-moon.svg) no-repeat 50% 50%;
-      background-size: contain;
+      // background: url(./assets/icon-moon.svg) no-repeat 50% 50%;
+      // background-size: contain;
     }
 
     .todo {
@@ -140,8 +146,8 @@
     }
 
     .todos-list__mode {
-      background: url(./src/assets/icon-sun.svg) no-repeat 50% 50%;
-      background-size: contain;
+      // background: url(./assets/icon-sun.svg) no-repeat 50% 50%;
+      // background-size: contain;
     }
 
     .todo {

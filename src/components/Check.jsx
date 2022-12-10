@@ -1,3 +1,5 @@
+import iconCheck from '../assets/icon-check.svg';
+
 function Check(props) {
   const { id, completed, onChange } = props;
 
@@ -11,7 +13,9 @@ function Check(props) {
         checked={completed}
         onChange={() => onChange(id)}
       />
-      <label className="check__label" htmlFor={`todo-${id}`}></label>
+      <label className="check__label" htmlFor={`todo-${id}`}>
+        <img src={iconCheck} alt="" />
+      </label>
     </div>
   );
 }

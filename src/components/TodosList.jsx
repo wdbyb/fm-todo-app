@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import Todo from './Todo';
 import Settings from './Settings';
 import Check from './Check';
+import iconMoon from '../assets/icon-moon.svg';
+import iconSun from '../assets/icon-sun.svg';
 
 function TodosList(props) {
   const initialBtns = [
@@ -23,6 +25,7 @@ function TodosList(props) {
   const [check, setCheck] = useState(false);
   const [filterCase, setFilterCase] = useState('all');
   const [itemsLeft, setItemsLeft] = useState(0);
+  const modeIcon = mode ? iconMoon : iconSun;
 
   const filterBtns = (type) => {
     switch (type) {
@@ -113,7 +116,9 @@ function TodosList(props) {
           onClick={props.onModeClick}
           type="button"
           aria-label="Dark/light mode toggler"
-        ></button>
+        >
+          <img width="11" height="9" src={modeIcon} alt="Mode icon" />
+        </button>
       </div>
       <div className="todos-list__input">
         <Check
