@@ -112,6 +112,7 @@ function TodosList(props) {
           className="todos-list__mode"
           onClick={props.onModeClick}
           type="button"
+          aria-label="Dark/light mode toggler"
         ></button>
       </div>
       <div className="todos-list__input">

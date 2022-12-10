@@ -10,6 +10,7 @@ function Todo(props) {
         className="todo__delete"
         type="button"
         onClick={() => onDeleteClick(id)}
+        aria-label="Delete todo"
       ></button>
       <p onClick={() => onCheckClick(id)}>{text}</p>
     </div>
