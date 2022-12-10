@@ -14,7 +14,7 @@ function Check(props) {
         onChange={() => onChange(id)}
       />
       <label className="check__label" htmlFor={`todo-${id}`}>
-        <img src={iconCheck} alt="" />
+        <img width="11" height="9" src={iconCheck} alt="" />
       </label>
     </div>
   );

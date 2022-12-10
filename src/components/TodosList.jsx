@@ -1,28 +1,45 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Todo from './Todo';
 import Settings from './Settings';
 import Check from './Check';
 import iconMoon from '../assets/icon-moon.svg';
 import iconSun from '../assets/icon-sun.svg';
 
+const getLocaleStorage = () => {
+  let todos = localStorage.getItem('todos');
+
+  if (todos) {
+    return JSON.parse(todos);
+  }
+
+  return [];
+};
+
+const initialTodos = [
+  {
+    id: 1,
+    text: 'Job around the park 3x',
+    completed: false,
+  },
+  {
+    id: 2,
+    text: 'Created a todo',
+    completed: true,
+  },
+];
+
 function TodosList(props) {
-  const initialBtns = [
-    {
-      id: 1,
-      text: 'Job around the park 3x',
-      completed: false,
-    },
-    {
-      id: 2,
-      text: 'Created a todo',
-      completed: true,
-    },
-  ];
   const { mode } = props;
-  const [buttons, setButtons] = useState(initialBtns);
-  const [filteredButtons, setFilteredButtons] = useState(initialBtns);
-  const [text, setText] = useState('');
-  const [check, setCheck] = useState(false);
+  const localeTodos = getLocaleStorage();
+
+  const [buttons, setButtons] = useState(
+    localeTodos.length > 0 ? localeTodos : initialTodos
+  );
+  const [filteredButtons, setFilteredButtons] = useState(buttons);
+  const [newTodo, setNewTodo] = useState({
+    text: '',
+    completed: false,
+  });
   const [filterCase, setFilterCase] = useState('all');
   const [itemsLeft, setItemsLeft] = useState(0);
   const modeIcon = mode ? iconMoon : iconSun;
@@ -51,17 +68,19 @@ function TodosList(props) {
   };
 
   const handleInputEnter = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && newTodo.text.length > 0) {
       setButtons((prev) => [
         ...prev,
         {
-          id: text + Math.random,
-          text,
-          completed: check,
+          id: newTodo.text + Math.random,
+          text: newTodo.text,
+          completed: newTodo.completed,
         },
       ]);
-      setText('');
-      setCheck(false);
+      setNewTodo({
+        text: '',
+        completed: false,
+      });
     }
   };
 
@@ -93,6 +112,7 @@ function TodosList(props) {
 
   useEffect(() => {
     getActiveLength();
+    localStorage.setItem('todos', JSON.stringify(buttons));
   }, [buttons]);
 
   useEffect(() => {
@@ -100,7 +120,7 @@ function TodosList(props) {
   }, [filterCase, buttons]);
 
   const handleMainCheckClick = () => {
-    setCheck(() => setCheck(!check));
+    setNewTodo((prev) => ({ ...newTodo, completed: !prev.completed }));
   };
 
   return (
@@ -117,13 +137,13 @@ function TodosList(props) {
           type="button"
           aria-label="Dark/light mode toggler"
         >
-          <img width="11" height="9" src={modeIcon} alt="Mode icon" />
+          <img width="26" height="26" src={modeIcon} alt="Mode icon" />
         </button>
       </div>
       <div className="todos-list__input">
         <Check
           id={'create-checked'}
-          completed={check}
+          completed={newTodo.completed}
           onChange={handleMainCheckClick}
         />
         <label>
@@ -132,9 +152,11 @@ function TodosList(props) {
             name="create"
             id="create"
             placeholder="Create a new todos-list"
-            onChange={(e) => setText(e.target.value)}
+            onChange={(e) =>
+              setNewTodo(() => ({ ...newTodo, text: e.target.value }))
+            }
             onKeyDown={handleInputEnter}
-            value={text}
+            value={newTodo.text}
           />
         </label>
       </div>
@@ -146,6 +168,7 @@ function TodosList(props) {
               {...btn}
               onDeleteClick={handleDeleteClick}
               onCheckClick={handleCheckClick}
+              mode={mode}
               key={index}
             />
           ))}

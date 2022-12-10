@@ -3,10 +3,14 @@ import Check from './Check';
 import iconCross from '../assets/icon-cross.svg';
 
 function Todo(props) {
-  const { id, text, completed, onDeleteClick, onCheckClick } = props;
+  const { id, text, completed, onDeleteClick, onCheckClick, mode } = props;
 
   return (
-    <div className={`todo ${completed ? 'completed' : ''}`}>
+    <div
+      className={`todo ${mode ? 'todo--light' : 'todo--dark'} ${
+        completed ? 'completed' : ''
+      }`}
+    >
       <Check id={id} completed={completed} onChange={onCheckClick} />
       <button
         className="todo__delete"

@@ -35,7 +35,10 @@
   }
 
   &__mode {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 26px;
     height: 26px;
 
@@ -108,11 +111,6 @@
       }
     }
 
-    .todos-list__mode {
-      // background: url(./assets/icon-moon.svg) no-repeat 50% 50%;
-      // background-size: contain;
-    }
-
     .todo {
       border-bottom: 1px solid #e3e4f1;
     }
@@ -143,11 +141,6 @@
       &::before {
         background: #25273d;
       }
-    }
-
-    .todos-list__mode {
-      // background: url(./assets/icon-sun.svg) no-repeat 50% 50%;
-      // background-size: contain;
     }
 
     .todo {
