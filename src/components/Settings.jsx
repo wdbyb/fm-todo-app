@@ -1,6 +1,7 @@
-function Settings(props) {
-  const { itemsLeft, filterCase, onFilterClick, onClearClick } = props;
-  const inputs = ['all', 'active', 'completed'];
+import { FilterTypes } from '../base';
+
+function Settings({ itemsLeft, filterCase, onFilterClick, onClearClick }) {
+  const inputs = [FilterTypes.ALL, FilterTypes.ACTIVE, FilterTypes.COMPLETED];
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -14,7 +15,7 @@ function Settings(props) {
           return (
             <div key={i}>
               <input
-                className={input === filterCase ? 'active' : ''}
+                className={input === filterCase ? FilterTypes.ACTIVE : ''}
                 onClick={onFilterClick}
                 type="button"
                 name={input}

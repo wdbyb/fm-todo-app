@@ -1,35 +1,12 @@
 import { useState, useEffect } from 'react';
+import { FilterTypes, initialTodos, getLocaleStorage } from '../base';
 import Todo from './Todo';
 import Settings from './Settings';
 import Check from './Check';
 import iconMoon from '../assets/icon-moon.svg';
 import iconSun from '../assets/icon-sun.svg';
 
-const getLocaleStorage = () => {
-  let todos = localStorage.getItem('todos');
-
-  if (todos) {
-    return JSON.parse(todos);
-  }
-
-  return [];
-};
-
-const initialTodos = [
-  {
-    id: 1,
-    text: 'Job around the park 3x',
-    completed: false,
-  },
-  {
-    id: 2,
-    text: 'Created a todo',
-    completed: true,
-  },
-];
-
-function TodosList(props) {
-  const { mode } = props;
+function TodosList({ mode, onModeClick }) {
   const localeTodos = getLocaleStorage();
 
   const [buttons, setButtons] = useState(
@@ -40,20 +17,20 @@ function TodosList(props) {
     text: '',
     completed: false,
   });
-  const [filterCase, setFilterCase] = useState('all');
+  const [filterCase, setFilterCase] = useState(FilterTypes.ALL);
   const [itemsLeft, setItemsLeft] = useState(0);
   const modeIcon = mode ? iconMoon : iconSun;
 
   const filterBtns = (type) => {
     switch (type) {
-      case 'all':
+      case FilterTypes.ALL:
         setFilteredButtons(buttons);
         break;
-      case 'active':
+      case FilterTypes.ACTIVE:
         const activeBtns = buttons.filter((btn) => !btn.completed);
         setFilteredButtons(activeBtns);
         break;
-      case 'completed':
+      case FilterTypes.COMPLETED:
         const completedBtns = buttons.filter((btn) => btn.completed);
         setFilteredButtons(completedBtns);
         break;
@@ -63,8 +40,8 @@ function TodosList(props) {
   };
 
   const getActiveLength = () => {
-    const active = buttons.filter((btn) => !btn.completed);
-    setItemsLeft(active.length);
+    const activeLength = buttons.filter((btn) => !btn.completed).length;
+    setItemsLeft(activeLength);
   };
 
   const handleInputEnter = (e) => {
@@ -133,7 +110,7 @@ function TodosList(props) {
         <h1>TODO</h1>
         <button
           className="todos-list__mode"
-          onClick={props.onModeClick}
+          onClick={onModeClick}
           type="button"
           aria-label="Dark/light mode toggler"
         >

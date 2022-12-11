@@ -1,8 +1,6 @@
 import iconCheck from '../assets/icon-check.svg';
 
-function Check(props) {
-  const { id, completed, onChange } = props;
-
+function Check({ id, completed, onChange }) {
   return (
     <div className="check">
       <input
