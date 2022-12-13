@@ -1,6 +1,6 @@
 # Frontend Mentor - Todo app solution
 
-This is a solution to the [Todo app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Todo app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -31,8 +31,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/wdbyb/fm-todo-app)
-- Live Site URL: [Add live site URL here](https://fm-todo-app-nine.vercel.app/)
+- Solution URL: [Github](https://github.com/wdbyb/fm-todo-app)
+- Live Site URL: [Vercel](https://fm-todo-app-nine.vercel.app/)
 
 ## My process
 
@@ -61,4 +61,3 @@ SVGs and images adding as imports in app is a not great idea. Having bad underst
 
 - Frontend Mentor - @wdbyb](https://www.frontendmentor.io/profile/wdbyb)
 - LinkedIn[@yuriy-vinivitin](https://www.linkedin.com/in/yuriy-vinivitin/)
-
